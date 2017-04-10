@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     {% load static %}
-    <link rel="stylesheet" href={% static "estilos.css" %}>
+    <link rel="stylesheet" href={% static 'estilos.css' %}>
     <title>Hola mundo</title>
   </head>
   <body>
-    <h1>Hola. Esto es Django</h1>
+    <h1>Hola, esto es Django</h1>
     {% load admin_urls %}
     <button name="button"><a href={% url 'registro' %}>Registro</a></button>
   </body>
