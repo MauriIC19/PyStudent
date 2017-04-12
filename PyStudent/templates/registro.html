@@ -7,6 +7,10 @@
   <body>
     <h1>Funcionó</h1>
     {% load admin_urls %}
+    <form action={% url 'registro' %} method="post">
+      Nombre: <input type="text" name="nombre"><br>
+      Correo: <input type="text" name="correo"><br>
+    </form>
     <button name="button"><a href={% url 'index' %}>Regresar</a></button>
   </body>
 </html>

@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Las llaves con porcentaje son para declaraciones,
+    las dobles llaves son para variables -->
     <meta charset="utf-8">
+    <!-- Carga de los recursos estáticos de Django -->
     {% load static %}
+    <!-- Se pueden ligar los estilos de la manera habitual -->
     <link rel="stylesheet" href={% static 'estilos.css' %}>
     <title>Hola mundo</title>
   </head>
   <body>
     <h1>Hola, esto es Django</h1>
     {% load admin_urls %}
-    <button name="button"><a href={% url 'registro' %}>Registro</a></button>
+    <button><a href={% url 'registro' %}>Registro</a></button>
+    <button><a href={% url 'datos' %}>Datos</a></button>
   </body>
 </html>
