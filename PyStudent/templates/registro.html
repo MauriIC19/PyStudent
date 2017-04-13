@@ -5,12 +5,17 @@
     <title>Funcionó</title>
   </head>
   <body>
-    <h1>Funcionó</h1>
+    <h1>Registrar</h1>
     {% load admin_urls %}
-    <form action={% url 'registro' %} method="post">
+    <form action={% url 'registro' %} method="POST">
+      {% csrf_token %}
       Nombre: <input type="text" name="nombre"><br>
-      Correo: <input type="text" name="correo"><br>
+      Correo: <input type="text" name="correo"><br><br>
+      <input type="submit" value="Registrar"><br>
     </form>
     <button name="button"><a href={% url 'index' %}>Regresar</a></button>
+    {% if aviso %}
+    <h1>{{ aviso }}</h1>
+    {% endif %}
   </body>
 </html>
