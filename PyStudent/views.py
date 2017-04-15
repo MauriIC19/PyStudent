@@ -2,13 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from PyStudent.models import Alumno
-from django.views.decorators.csrf import *
 
 def index(request):
     template = loader.get_template('index.html')
     return render(request, 'index.html')
 
-#@csrf_exempt
 def registro(request):
 
     if request.method == 'POST':
@@ -21,7 +19,6 @@ def registro(request):
         context = {
             'aviso':'Alumno agregado'
         }
-
         return render(request, 'registro.html', context)
 
     else:
@@ -41,3 +38,8 @@ def datos(request):
     context ={'a': alumnos}
 
     return render(request, 'datos.html', context)
+
+def ajax(request):
+    if request.is_ajax():
+        return HttpResponse('Hola')
+    return render(request, 'ajax.html')

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% load admin_urls %}
+    {% load static %}
+    <script src={% static 'js/jquery-3.2.1.min.js' %}></script>
     <meta charset="utf-8">
     <title>Funcionó</title>
   </head>
   <body>
     <h1>Registrar</h1>
-    {% load admin_urls %}
     <form action={% url 'registro' %} method="POST">
       {% csrf_token %}
       Nombre: <input type="text" name="nombre"><br>
       Correo: <input type="text" name="correo"><br><br>
-      <input type="submit" value="Registrar"><br>
+      <input type="submit" name="button" value="Registrar">
     </form>
-    <button name="button"><a href={% url 'index' %}>Regresar</a></button>
-    {% if aviso %}
+    <button onclick=""><a href={% url 'index' %}>Regresar</a></button>
     <h1>{{ aviso }}</h1>
-    {% endif %}
   </body>
 </html>

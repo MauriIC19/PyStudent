@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^registro/', views.registro, name='registro'),
     url(r'^datos/', views.datos, name='datos'),
+    url(regex=r'^ajax/$', view=views.ajax, name='ajax'),
 ]

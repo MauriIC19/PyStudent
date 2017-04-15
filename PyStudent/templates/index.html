@@ -6,14 +6,15 @@
     <meta charset="utf-8">
     <!-- Carga de los recursos estáticos de Django -->
     {% load static %}
+    {% load admin_urls %}
     <!-- Se pueden ligar los estilos de la manera habitual -->
-    <link rel="stylesheet" href={% static 'estilos.css' %}>
+    <link rel="stylesheet" href={% static 'css/estilos.css' %}>
     <title>Hola mundo</title>
   </head>
   <body>
     <h1>Hola, esto es Django</h1>
-    {% load admin_urls %}
     <button><a href={% url 'registro' %}>Registro</a></button>
     <button><a href={% url 'datos' %}>Datos</a></button>
+    <button><a href={% url 'ajax' %}>Datos</a></button>
   </body>
 </html>

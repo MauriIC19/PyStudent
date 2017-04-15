@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    {% load admin_urls %}
+    <script src={% static 'js/jquery-3.2.1.min.js' %}></script>
+    <meta charset="utf-8">
+    <title>Ajax</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#btn").click(function() {
+      $.ajax({
+          type: 'POST' ,
+          url: '{% url 'registro' %}',
+          data:{
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+              nombre: $("input[name='nombre']").val(),
+              correo: $("input[name='correo']").val(),
+          },
+          success: function(response) {
+              $('#aviso').html(response);
+          }
+        });
+    });
+  });
+  </script>
+</html>
