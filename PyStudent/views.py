@@ -2,8 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from PyStudent.models import Alumno
+import json
+import pyttsx
 
 def index(request):
+
     template = loader.get_template('index.html')
     return render(request, 'index.html')
 
@@ -40,6 +43,31 @@ def datos(request):
     return render(request, 'datos.html', context)
 
 def ajax(request):
+
+    if request.method == 'POST':
+
+        nombre = request.POST.get('nombre')
+        correo = request.POST.get('correo')
+        al = Alumno(name=nombre, mail=correo)
+        al.save()
+
     if request.is_ajax():
-        return HttpResponse('Hola')
-    return render(request, 'ajax.html')
+        
+        al = Alumno.objects.all()
+        alumnos = {}
+
+        for a in al:
+            alumnos[a.id] = {'name':a.name, 'mail': a.mail}
+
+        alumnosJson = json.dumps(alumnos)
+
+        return HttpResponse(alumnosJson, content_type='application/json')
+
+    else:
+        return render(request, 'ajax.html')
+
+
+    # engine = pyttsx.init()
+    #
+    # engine.say('Hola a todos, bienvenidos a paiStudent')
+    # engine.runAndWait()
