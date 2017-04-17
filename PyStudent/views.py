@@ -2,12 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from PyStudent.models import Alumno
+from comtypes.client import CreateObject
+import pythoncom
 import json
-import pyttsx
 
 def index(request):
 
-    template = loader.get_template('index.html')
     return render(request, 'index.html')
 
 def registro(request):
@@ -52,7 +52,7 @@ def ajax(request):
         al.save()
 
     if request.is_ajax():
-        
+
         al = Alumno.objects.all()
         alumnos = {}
 
@@ -66,8 +66,26 @@ def ajax(request):
     else:
         return render(request, 'ajax.html')
 
+def dictado(request):
+    if request.method == 'POST':
+        if request.is_ajax:
+            idAl = request.POST.get('id')
+            al = Alumno.objects.get(id=int(idAl))
 
-    # engine = pyttsx.init()
-    #
-    # engine.say('Hola a todos, bienvenidos a paiStudent')
-    # engine.runAndWait()
+            pythoncom.CoInitialize()
+
+            text = al.name
+            src = "/static/audio/audio.mp3"
+            engine = CreateObject("SAPI.SpVoice")
+            stream = CreateObject("SAPI.SpFileStream")
+
+            from comtypes.gen import SpeechLib
+
+            stream.Open("C:/Users/sasuk/Desktop/Paradigmas/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
+            engine.AudioOutputStream = stream
+            engine.speak(text)
+            stream.Close()
+
+            return HttpResponse(src)
+
+    return render(request, 'dictado.html')

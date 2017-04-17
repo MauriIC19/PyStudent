@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^registro/', views.registro, name='registro'),
     url(r'^datos/', views.datos, name='datos'),
     url(r'^ajax/$', views.ajax, name='ajax'),
+    url(r'^dictado/$', views.dictado, name='dictado'),
 ]
