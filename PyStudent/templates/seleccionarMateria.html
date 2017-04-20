@@ -15,13 +15,19 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="http//:www.fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="public/css/normalize.css">
-  <link rel="stylesheet" href="public/css/skeleton.css">
-  <link rel="stylesheet" href="public/css/style-general.css">
+  {% load static %}
+  {% load admin_urls %}
+  <link rel="stylesheet" href={% static "css/normalize.css" %}>
+  <link rel="stylesheet" href={% static "css/skeleton.css" %}>
+  <link rel="stylesheet" href={% static "css/style-index.css" %}>
+  <!-- Javascript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src={% static "js/jquery-3.2.1.min.js" %}></script>
+  <script src={% static "js/funciones.js" %}></script>
 
 </head>
 <body>
@@ -36,17 +42,17 @@
       <div class="two columns option cancel-option selected">Evaluaciones</div>
       <div class="two columns option cancel-option">Estadísticas</div>
       <div class="two columns option cancel-option">Configuración</div>
-      <div class="two columns option cancel-option">Cerrar Sesión</div>
+      <div class="two columns option cancel-option"><a href={% url 'index' %}>Cerrar Sesión</a></div>
     </div>
   </div>
 
   <div class="section center">
     <div class="container">
-      <h5>Bienvenido Luis Jorge</h5>
+      <h5>Bienvenido {{ nombre }}</h5>
       <p>Seleccione el área de estudios que deseas evaluar</p>
       <div class="row">
         <div class="box-option four columns">
-          <img class="u-full-width" src="public/img/iconTopic.png" alt="">
+          <a href={% url 'evaluacion' %}><img class="u-full-width" src={% static "/img/iconTopic.png" %} alt=""></a>
           <p>Ortografía y Gramática</p>
         </div>
       </div>
@@ -57,3 +63,5 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+<input id="token" type="hidden" value='{{ csrf_token }}'>
+<input id="url" type="hidden" value='{% url 'index' %}'>

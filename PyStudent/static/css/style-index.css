@@ -1,5 +1,14 @@
-*{
-  font-family: "Avenir";
+a{
+  text-decoration: none;
+  color: rgba(0, 0, 0, .8);
+}
+
+button>a:hover{
+  color: white;
+}
+
+button>a{
+  color: #27C79A;
 }
 
 body{
@@ -47,7 +56,8 @@ button:hover{
 }
 
 .center{
-  padding: 20rem 0 5rem;
+  /*Original: padding: 50rem 0 5rem;*/
+  padding: 10rem 0 5rem;
 }
 
 .center h1{
@@ -82,6 +92,8 @@ button:hover{
 
 .footer{
   background: #333E50;
+  /*Se agregó*/
+  padding: 2.7rem;
 }
 
 .footer p{

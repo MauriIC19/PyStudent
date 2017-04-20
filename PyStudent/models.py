@@ -9,6 +9,7 @@ class Alumno(models.Model):
     apellidos = models.CharField(max_length=100)
     mail = models.CharField(max_length=100)
     fechaNac = models.CharField(max_length=100)
+    estado = models.CharField(max_length=100)
     password = models.CharField(max_length=20)
 
 class Estado(models.Model):

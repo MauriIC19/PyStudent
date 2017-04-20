@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^registro/', views.registro, name='registro'),
     url(r'^login/', views.login, name='login'),
-    url(r'^login/', views.login, name='login'),
+    url(r'^materia/', views.materia, name='materia'),
+    url(r'^evaluacion/', views.evaluacion, name='evaluacion'),
 ]

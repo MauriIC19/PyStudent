@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
@@ -15,7 +14,7 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {% load static %}
@@ -23,9 +22,12 @@
   <link rel="stylesheet" href={% static "css/normalize.css" %}>
   <link rel="stylesheet" href={% static "css/skeleton.css" %}>
   <link rel="stylesheet" href={% static "css/style-index.css" %}>
-
+  <!-- Javascript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src={% static "js/jquery-3.2.1.min.js" %}></script>
+  <script src={% static "js/funciones.js" %}></script>
 </head>
-<body>
+<body onload="cargarEstados()">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -55,14 +57,14 @@
           <label for="exampleMessage">¿Cuál es tu fecha de nacimiento?</label>
         </div>
         <div class="six columns">
-          <select class="four columns" name="diaNacimiento" >
-            <option value="" disabled selected>Día</option>
+          <select id="dia" class="four columns" name="diaNacimiento" >
+            <option value="" disabled hidden selected>Día</option>
           </select>
-          <select class="four columns" name="mesNacimiento">
-            <option value="" disabled selected>Mes</option>
+          <select id="mes" class="four columns" name="mesNacimiento">
+            <option value="" disabled hidden selected>Mes</option>
           </select>
-          <select class="four columns" name="anioNacimiento">
-            <<option value="" disabled selected>Año</option>
+          <select id="anio" class="four columns" name="anioNacimiento">
+            <<option value="" disabled hidden selected>Año</option>
           </select>
         </div>
       </div>
@@ -71,8 +73,8 @@
           <label for="exampleMessage">¿En que estado de la república vives?</label>
         </div>
         <div class="six columns">
-          <select class="u-full-width" name="estadoActual">
-            <option value="" disabled selected>Seleccione un Estado</option>
+          <select id="estado" class="u-full-width" name="estadoActual">
+            <option value="" hidden disabled selected>Seleccione un Estado</option>
           </select>
         </div>
       </div>
@@ -97,10 +99,11 @@
   </div>
 
   <div class="section footer">
-    <button>Continuar</button>
+    <button onclick="registrar()">Continuar</button>
   </div>
 
   <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+<input id="token" type="hidden" value='{{ csrf_token }}'>

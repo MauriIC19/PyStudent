@@ -15,6 +15,7 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -23,6 +24,10 @@
   <link rel="stylesheet" href={% static "css/normalize.css" %}>
   <link rel="stylesheet" href={% static "css/skeleton.css" %}>
   <link rel="stylesheet" href={% static "css/style-index.css" %}>
+  <!-- Javascript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src={% static "js/jquery-3.2.1.min.js" %}></script>
+  <script src={% static "js/funciones.js" %}></script>
 
 </head>
 <body>
@@ -47,7 +52,7 @@
 
         <div class="u-full-width">
           <label class="one-half column" for="exampleMessage">Correo Electrónico:</label>
-          <input class="u-full-width" type="text" placeholder="mail@example.com" id="ccorreoInicioSesion">
+          <input class="u-full-width" type="text" placeholder="mail@example.com" id="correoInicioSesion">
         </div>
       </div>
       <div class="row">
@@ -62,10 +67,11 @@
   </div>
 
   <div class="section footer">
-    <button>Iniciar Sesión</button>
+    <button onclick="verificarLogin()">Iniciar Sesión</button>
   </div>
 
   <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+<input id="token" type="hidden" value='{{ csrf_token }}'>
