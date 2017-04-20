@@ -1,4 +1,3 @@
-window.location.replace(url);
 function registrar(){
     $.ajax({
         type: 'POST',

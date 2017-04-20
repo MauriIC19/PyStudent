@@ -75,7 +75,32 @@ def materia(request):
         return render(request, 'seleccionarMateria.html', context)
     else:
         return redirect('/pystudent/')
-        
+
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def evaluacion(request):
-    return render(request, 'seleccionarEvaluacion.html')
+    if request.session['id'] is not 0:
+        return render(request, 'seleccionarEvaluacion.html')
+    else:
+        return redirect('/pystudent/')
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def instrucciones(request):
+    if request.session['id'] is not 0:
+        return render(request, 'dictadoPalabrasInstrucciones.html')
+    else:
+        return redirect('/pystudent/')
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def dictado(request):
+    if request.session['id'] is not 0:
+        return render(request, 'dictadoPalabras.html')
+    else:
+        return redirect('/pystudent/')
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def resultados(request):
+    if request.session['id'] is not 0:
+        return render(request, 'resultadoDictado.html')
+    else:
+        return redirect('/pystudent/')

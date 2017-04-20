@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^login/', views.login, name='login'),
     url(r'^materia/', views.materia, name='materia'),
     url(r'^evaluacion/', views.evaluacion, name='evaluacion'),
+    url(r'^instrucciones/', views.instrucciones, name='instrucciones'),
+    url(r'^dictado/', views.dictado, name='dictado'),
+    url(r'^resultados/', views.resultados, name='resultados'),
 ]

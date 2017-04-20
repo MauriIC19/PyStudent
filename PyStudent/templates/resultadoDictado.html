@@ -19,9 +19,15 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="public/css/normalize.css">
-  <link rel="stylesheet" href="public/css/skeleton.css">
-  <link rel="stylesheet" href="public/css/style-general.css">
+  {% load static %}
+  {% load admin_urls %}
+  <link rel="stylesheet" href={% static "css/normalize.css" %}>
+  <link rel="stylesheet" href={% static "css/skeleton.css" %}>
+  <link rel="stylesheet" href={% static "css/style-index.css" %}>
+  <!-- Javascript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src={% static "js/jquery-3.2.1.min.js" %}></script>
+  <script src={% static "js/funciones.js" %}></script>
 
 </head>
 <body>
@@ -176,7 +182,7 @@
     </div>
 
     <div class="section footer">
-      <button>Listo</button>
+      <button><a href={% url 'materia' %}>Listo</a></button>
     </div>
 
     <!-- End Document
