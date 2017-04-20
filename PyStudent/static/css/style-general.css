@@ -1,0 +1,198 @@
+*{
+  font-family: "Avenir";
+}
+
+.width60{
+  width: 60% !important;
+}
+
+.width50{
+  width: 50% !important;
+}
+
+.width95{
+  width: 95% !important;
+}
+
+body{
+
+}
+
+.selected{
+  color: #27C79A;
+}
+
+button{
+  background-color: #27C79A;
+  color: white;
+  border-color: transparent;
+}
+
+button:hover{
+  background-color: #27C79A;
+  color: white;
+  border-color: transparent;
+}
+
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select{
+  border: 2px solid #EBEBEB;
+  outline: 0;
+  border-radius: 10px;
+}
+
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, textarea:focus, select:focus{
+  border: 2px solid #EBEBEB;
+  outline: 0;
+}
+
+.section{
+  text-align: center;
+}
+
+.section p{
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header{
+  background: white;
+  font-weight: 500;
+  color: #333E50;
+  padding: 25px;
+}
+
+.option{
+  cursor: pointer;
+  line-height: 4rem;
+}
+
+.cancel-option{
+  font-weight: 400;
+}
+
+.cancel-option:hover{
+  font-weight: 500;
+}
+
+.logo{
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.center{
+  padding: 5rem 0 5rem;
+
+}
+
+.center h5{
+  color: #333E50;
+  font-weight: 500;
+}
+
+.center p{
+  color: #333E50;
+  font-weight: 400;
+}
+
+.center label{
+  color: #333E50;
+  font-weight: 400;
+  text-align: left;
+  line-height: 4rem;
+}
+
+.center .forgot-password{
+  cursor: pointer;
+}
+
+.center .forgot-password:hover{
+  font-weight: 500;
+}
+
+.box-option{
+  height: 200px;
+  border: solid 2px #EBEBEB;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.box-option img{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100px;
+  transition: all 0.2s;
+}
+
+.box-option p{
+  color: #333E50;
+  font-weight: 400;
+  transition: all 0.2s;
+}
+
+.box-option:hover{
+  height: 205px;
+}
+
+.box-option:hover img{
+  width: 105px;
+}
+
+.box-option:hover p{
+  font-weight: 500;
+}
+
+.grade-container{
+  margin-bottom: 20px;
+}
+
+.box-grade{
+  height: 100px;
+  border: solid 3px #EBEBEB;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.box-grade h1{
+  color: #333E50;
+  font-weight: 400;
+  line-height: 9rem;
+  transition: all 0.2s;
+}
+
+.box-grade:hover{
+  background-color: #27C79A;
+  border: solid 3px #27C79A;
+}
+
+.box-grade:hover h1{
+  color: white;
+}
+
+.speaker-container{
+  margin-bottom: 20px;
+}
+
+.word{
+  margin-bottom: 30px;
+}
+
+.wrong{
+  color: #D12329 !important;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0px 25px 30px 0px #000000;
+  background: white;
+}
+
+.footer button{
+  margin-top: 1rem;
+  float: right;
+  margin-right: 1rem;
+}

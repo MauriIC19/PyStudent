@@ -1,21 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    {% load admin_urls %}
-    {% load static %}
-    <script src={% static 'js/jquery-3.2.1.min.js' %}></script>
-    <meta charset="utf-8">
-    <title>Funcionó</title>
-  </head>
-  <body>
-    <h1>Registrar</h1>
-    <form action={% url 'registro' %} method="POST">
-      {% csrf_token %}
-      Nombre: <input type="text" name="nombre"><br>
-      Correo: <input type="text" name="correo"><br><br>
-      <input type="submit" name="button" value="Registrar">
-    </form>
-    <button onclick=""><a href={% url 'index' %}>Regresar</a></button>
-    <h1>{{ aviso }}</h1>
-  </body>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>PyStudent</title>
+  <meta name="Sistema de Evaluación Académica" content="">
+  <meta name="Luis Jorge Lozano" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {% load static %}
+  {% load admin_urls %}
+  <link rel="stylesheet" href={% static "css/normalize.css" %}>
+  <link rel="stylesheet" href={% static "css/skeleton.css" %}>
+  <link rel="stylesheet" href={% static "css/style-index.css" %}>
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="section header">
+    <div class="row">
+      <div class="two columns option logo"><a href={% url 'index' %}>PyStudent</a></div>
+      <div class="eight columns">&nbsp</div>
+      <div class="two columns option cancel-option"><a href={% url 'login' %}>Inicia Sesión</a></div>
+    </div>
+  </div>
+
+  <div class="section center">
+    <div class="container width60">
+      <h5>Queremos saber sobre ti</h5>
+      <p>Estás a unos pasos de comenzar a crecer académicamente, completa la siguiente información para vivir la experiencia PyStudent.</p>
+      <div class="row">
+        <div class="six columns">
+          <input class="u-full-width" type="text" placeholder="¿Cómo te llamas?" id="nombreRegistro">
+        </div>
+        <div class="six columns">
+          <input class="u-full-width" type="text" placeholder="¿Cuáles son tus apellidos?" id="apellidosRegistro">
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for="exampleMessage">¿Cuál es tu fecha de nacimiento?</label>
+        </div>
+        <div class="six columns">
+          <select class="four columns" name="diaNacimiento" >
+            <option value="" disabled selected>Día</option>
+          </select>
+          <select class="four columns" name="mesNacimiento">
+            <option value="" disabled selected>Mes</option>
+          </select>
+          <select class="four columns" name="anioNacimiento">
+            <<option value="" disabled selected>Año</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for="exampleMessage">¿En que estado de la república vives?</label>
+        </div>
+        <div class="six columns">
+          <select class="u-full-width" name="estadoActual">
+            <option value="" disabled selected>Seleccione un Estado</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <label for="exampleMessage">Ingresa tu correo electrónico</label>
+        </div>
+        <div class="six columns">
+          <input class="u-full-width" type="email" placeholder="mail@example.com" id="emailRegistro">
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns">
+          <input class="u-full-width" type="password" placeholder="Ingrese una Contraseña" id="contraseniaRegistro">
+        </div>
+        <div class="six columns">
+          <input class="u-full-width" type="password" placeholder="Verifie su Contraseña" id="contraseniaVerificarRegistro">
+        </div>
+      </div>
+      <p>Si no cuentas con un correo electrónico puedes pedirle a un adulto que realice el registro por ti</p>
+    </div>
+  </div>
+
+  <div class="section footer">
+    <button>Continuar</button>
+  </div>
+
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
 </html>

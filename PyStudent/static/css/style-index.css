@@ -1,0 +1,92 @@
+*{
+  font-family: "Avenir";
+}
+
+body{
+  background-image: url("../img/indexBackground.jpg");
+  background-size: cover;
+  background-blend-mode: color;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.selected{
+  color: #27C79A;
+}
+
+button{
+  border-color: #27C79A;
+  color: #27C79A;
+  transition: all 0.3s;
+}
+
+button:hover{
+  background-color: #27C79A;
+  color: white;
+  border-color: transparent;
+}
+
+.section{
+  text-align: center;
+}
+
+.section p{
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header{
+  background: white;
+  font-weight: 500;
+  color: #333E50;
+  padding: 10px;
+}
+
+.option{
+  cursor: pointer;
+}
+
+.center{
+  padding: 20rem 0 5rem;
+}
+
+.center h1{
+  color: #333E50;
+  font-weight: 600;
+}
+
+.center h5{
+  color: #333E50;
+  font-weight: 500;
+}
+
+.center p{
+  color: #333E50;
+  font-weight: 400;
+}
+
+.images{
+  background-color: white;
+  padding: 5rem 0 5rem;
+}
+
+.comment{
+  border: dashed 1px #27C79A;
+}
+
+.comment h6{
+  margin-top: 2.5rem;
+  color: #333E50;
+  font-weight: 500;
+}
+
+.footer{
+  background: #333E50;
+}
+
+.footer p{
+  padding: 10px;
+  margin-bottom: 0;
+  color: white;
+  font-weight: 500;
+}

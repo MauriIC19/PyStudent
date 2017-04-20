@@ -6,4 +6,10 @@ from django.db import models
 
 class Alumno(models.Model):
     name = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
     mail = models.CharField(max_length=100)
+    fechaNac = models.CharField(max_length=100)
+    password = models.CharField(max_length=20)
+
+class Estado(models.Model):
+    estado = models.CharField(max_length=200)

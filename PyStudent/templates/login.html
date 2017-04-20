@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>PyStudent</title>
+  <meta name="Sistema de Evaluación Académica" content="">
+  <meta name="Luis Jorge Lozano" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {% load static %}
+  {% load admin_urls %}
+  <link rel="stylesheet" href={% static "css/normalize.css" %}>
+  <link rel="stylesheet" href={% static "css/skeleton.css" %}>
+  <link rel="stylesheet" href={% static "css/style-index.css" %}>
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="section header">
+    <div class="row">
+      <div class="two columns option logo"><a href={% url 'index' %}>PyStudent</a></div>
+    <div class="eight columns">&nbsp</div>
+    <div class="two columns option cancel-option"><a href={% url 'registro' %}>Regístrate</a></div>
+    </div>
+  </div>
+
+  <div class="section center">
+    <div class="container width50">
+      <h5>Inicio de Sesión</h5>
+      <p>Ingresa tus datos de acceso para poder iniciar sesión y comenzar a realizar las evaluaciones que hemos preparado para ti.</p>
+
+      <div class="row">
+
+        <div class="u-full-width">
+          <label class="one-half column" for="exampleMessage">Correo Electrónico:</label>
+          <input class="u-full-width" type="text" placeholder="mail@example.com" id="ccorreoInicioSesion">
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="u-full-width">
+          <label for="exampleMessage">Contraseña:</label>
+          <input class="u-full-width" type="password" placeholder="Ingrese Contraseña" id="contraseniaInicioSesion">
+        </div>
+      </div>
+      <p class="forgot-password">¿Olvidaste tu contraseña? Da clic aquí para recuperarla.</p>
+    </div>
+  </div>
+
+  <div class="section footer">
+    <button>Iniciar Sesión</button>
+  </div>
+
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

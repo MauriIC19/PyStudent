@@ -8,7 +8,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^registro/', views.registro, name='registro'),
-    url(r'^datos/', views.datos, name='datos'),
-    url(r'^ajax/$', views.ajax, name='ajax'),
-    url(r'^dictado/$', views.dictado, name='dictado'),
+    url(r'^login/', views.login, name='login'),
+    url(r'^login/', views.login, name='login'),
 ]
