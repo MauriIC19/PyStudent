@@ -17,3 +17,8 @@ class Estado(models.Model):
 
 class Palabras(models.Model):
     palabra = models.CharField(max_length=100)
+
+class Puntaje(models.Model):
+    idUsuario = models.CharField(max_length=3)
+    aciertos = models.CharField(max_length=3)
+    errores = models.CharField(max_length=3)

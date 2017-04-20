@@ -71,7 +71,7 @@ function leerPalabra() {
 }
 
 x = 1;
-
+palabras = [];
 function cambiarPalabra(){
   $.ajax({
       type: 'POST' ,
@@ -83,9 +83,32 @@ function cambiarPalabra(){
       success: function(response) {
         var audio = document.getElementById("audio");
         audio.src = response
-        document.getElementById('conteo').innerHTML =
-        "<p>Palabra "+x+" de 20</p>"
-        x++;
+        document.getElementById('conteo').innerHTML = "<p>Palabra "+x+" de 20</p>"
+        if (x>1) {
+          palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
+          document.getElementById('palabraEscrita').value = ""
+          console.log(palabras)
+        }
+        if (x == 20) {
+          boton = document.getElementById('siguiente')
+          boton.removeAttribute("onclick");
+        }
+        x++
+    }
+  });
+}
+
+function enviarPalabras(){
+    palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
+  $.ajax({
+      type: 'POST' ,
+      url: '/pystudent/resultados/',
+      data:{
+          csrfmiddlewaretoken: $("#token").val(),
+          'arrPalabras': palabras,
+      },
+      success: function() {
+        window.location.href = "/pystudent/resultados"
     }
   });
 }

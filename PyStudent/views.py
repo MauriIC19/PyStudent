@@ -121,6 +121,9 @@ def dictado(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def resultados(request):
     if request.session['id'] is not 0:
+        if request.method == 'POST':
+            palabras = request.POST.getlist('arrPalabras[]')
+            
         return render(request, 'resultadoDictado.html')
     else:
         return redirect('/pystudent/')
