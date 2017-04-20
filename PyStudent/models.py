@@ -14,3 +14,6 @@ class Alumno(models.Model):
 
 class Estado(models.Model):
     estado = models.CharField(max_length=200)
+
+class Palabras(models.Model):
+    palabra = models.CharField(max_length=100)

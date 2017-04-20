@@ -64,3 +64,37 @@ function verificarLogin(){
     }
   });
 }
+
+function leerPalabra() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+x = 1;
+
+function cambiarPalabra(){
+  $.ajax({
+      type: 'POST' ,
+      url: '#',
+      data:{
+          csrfmiddlewaretoken: $("#token").val(),
+          key: x,
+      },
+      success: function(response) {
+        var audio = document.getElementById("audio");
+        audio.src = response
+        document.getElementById('conteo').innerHTML =
+        "<p>Palabra "+x+" de 20</p>"
+        x++;
+    }
+  });
+}
+
+$(document).ajaxStart(function(){
+          $("#loader").css("display","block");
+          $("#bocina").css("display","none");
+        });
+        $(document).ajaxComplete(function(){
+          $("#loader").css("display","none");
+          $("#bocina").css("display","block");
+        });

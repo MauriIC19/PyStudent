@@ -15,7 +15,7 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="http//:www.fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -24,12 +24,38 @@
   <link rel="stylesheet" href={% static "css/normalize.css" %}>
   <link rel="stylesheet" href={% static "css/skeleton.css" %}>
   <link rel="stylesheet" href={% static "css/style-index.css" %}>
+  <style>
+      .loader {
+      position: relative;
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      left: calc(50% - 50px);
+      animation: spin 2s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #bocina{
+      position: relative;
+      width: 100px;
+      height: 100px;
+      left: calc(50% - 50px);
+      cursor: pointer;
+    }
+  </style>
   <!-- Javascript
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src={% static "js/jquery-3.2.1.min.js" %}></script>
   <script src={% static "js/funciones.js" %}></script>
 </head>
-<body>
+<body onload="cambiarPalabra()">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -49,7 +75,7 @@
       <div class="row speaker-container">
         <div class="four columns">&nbsp</div>
         <div class="box-option four columns">
-          <img class="u-full-width" src={% static "/img/iconSpeaker.png" %} alt="">
+          <a onclick="leerPalabra()"><div id="loader" class="loader"></div><img id="bocina" class="u-full-width" src={% static "/img/iconSpeaker.png" %} alt=""></a>
           <p>Presiona para escuchar</p>
         </div>
         <div class="four columns">&nbsp</div>
@@ -61,15 +87,16 @@
       </div>
       <div class="row">
         <div class="four columns">&nbsp</div>
+        <div class="four columns"></div>
       </div>
       <div class="row">
-        <button>Siguiente palabra</button>
+        <button onclick="cambiarPalabra()">Siguiente palabra</button>
       </div>
       <div class="row">
         <div class="four columns">&nbsp</div>
       </div>
       <div class="row">
-        <p>Palabra 20 de 20</p>
+        <p id="conteo">Palabra 1 de 20</p>
       </div>
     </div>
   </div>
@@ -82,3 +109,5 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+<audio id="audio" src=""></audio>
+<input id="token" type="hidden" value='{{ csrf_token }}'>

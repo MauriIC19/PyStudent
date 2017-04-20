@@ -93,6 +93,26 @@ def instrucciones(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dictado(request):
     if request.session['id'] is not 0:
+        if request.method == 'POST':
+            key = request.POST.get('key')
+            palabra = Palabras.objects.get(id = int(key))
+
+            pythoncom.CoInitialize()
+
+            text = palabra.palabra
+            src = "/static/audio/audio.mp3"
+            engine = CreateObject("SAPI.SpVoice")
+            stream = CreateObject("SAPI.SpFileStream")
+
+            from comtypes.gen import SpeechLib
+
+            stream.Open("C:/Users/sasuk/Desktop/Paradigmas/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
+            engine.AudioOutputStream = stream
+            engine.speak(text)
+            stream.Close()
+
+            return HttpResponse(src)
+
         return render(request, 'dictadoPalabras.html')
     else:
         return redirect('/pystudent/')
