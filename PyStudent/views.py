@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
+from comtypes.client import CreateObject
 from PyStudent.models import Alumno
 from PyStudent.models import Estado
-from comtypes.client import CreateObject
 import pythoncom
 import json
 
