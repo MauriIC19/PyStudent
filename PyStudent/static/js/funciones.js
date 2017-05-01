@@ -65,12 +65,18 @@ function verificarLogin(){
   });
 }
 
+function gradoDictado(x){
+  var a = document.getElementById('irDictado'); //or grab it by tagname etc
+  a.href = "/pystudent/dictado?grado="+x;
+  a.disabled = false;
+}
+
 function leerPalabra() {
     var audio = document.getElementById("audio");
     audio.play();
 }
 
-x = 1;
+x = 0;
 palabras = [];
 function cambiarPalabra(){
   $.ajax({
@@ -83,15 +89,18 @@ function cambiarPalabra(){
       success: function(response) {
         var audio = document.getElementById("audio");
         audio.src = response
-        document.getElementById('conteo').innerHTML = "<p>Palabra "+x+" de 20</p>"
-        if (x>1) {
+        document.getElementById('conteo').innerHTML = "<p>Palabra "+(x+1)+" de 20</p>"
+        if (x>0) {
           palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
           document.getElementById('palabraEscrita').value = ""
-          console.log(palabras)
         }
-        if (x == 20) {
-          boton = document.getElementById('siguiente')
-          boton.removeAttribute("onclick");
+        if (x == 19) {
+          boton = document.getElementById('siguiente');
+          boton.innerHTML = "Finalizar Dictado";
+          boton.onclick = null;
+          boton.onclick = function(){
+            enviarPalabras();
+          }
         }
         x++
     }

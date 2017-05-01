@@ -23,7 +23,6 @@ def registro(request):
         password = request.POST.get('password')
 
         al = Alumno();
-
         al.name = nombre
         al.apellidos = apellidos
         al.mail = correo
@@ -38,10 +37,8 @@ def registro(request):
         est = {}
         for estado in estados:
             est[estado.id] = {'estado':estado.estado}
-
         estadosJson = json.dumps(est)
         return HttpResponse(estadosJson, content_type='application/json')
-
     else:
         return render(request, 'registro.html')
 
@@ -49,23 +46,20 @@ def login(request):
     if request.method == 'POST':
         correo = request.POST.get('correo')
         password = request.POST.get('password')
-
         try:
             user = Alumno.objects.get(mail=correo, password=password)
         except Alumno.DoesNotExist:
             user = None
-
         if user:
             context = {'key': '1'}
             request.session['id'] = user.id
-
         else:
             context = {'key': '0'}
-
         contextJson = json.dumps(context)
         return HttpResponse(contextJson, content_type='application/json')
     else:
         return render(request, 'login.html')
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def materia(request):
@@ -76,12 +70,14 @@ def materia(request):
     else:
         return redirect('/pystudent/')
 
+
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def evaluacion(request):
     if request.session['id'] is not 0:
         return render(request, 'seleccionarEvaluacion.html')
     else:
         return redirect('/pystudent/')
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def instrucciones(request):
@@ -93,20 +89,25 @@ def instrucciones(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dictado(request):
     if request.session['id'] is not 0:
+        grade = request.GET.get('grado')
+
         if request.method == 'POST':
             key = request.POST.get('key')
-            palabra = Palabras.objects.get(id = int(key))
+            textoPalabras = Palabras.objects.filter(dificultad = int(grade))
+            pal = []
+
+            for palabra in textoPalabras:
+                pal.append(palabra.palabra)
 
             pythoncom.CoInitialize()
-
-            text = palabra.palabra
+            text = pal[int(key)]
             src = "/static/audio/audio.mp3"
             engine = CreateObject("SAPI.SpVoice")
             stream = CreateObject("SAPI.SpFileStream")
 
             from comtypes.gen import SpeechLib
 
-            stream.Open("C:/Users/sasuk/Desktop/Paradigmas/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
+            stream.Open("C:/Users/sasuk/Desktop/PyStudent/PyStudent/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
             engine.AudioOutputStream = stream
             engine.speak(text)
             stream.Close()
@@ -123,7 +124,7 @@ def resultados(request):
     if request.session['id'] is not 0:
         if request.method == 'POST':
             palabras = request.POST.getlist('arrPalabras[]')
-            
+            print(palabras)
         return render(request, 'resultadoDictado.html')
     else:
         return redirect('/pystudent/')
