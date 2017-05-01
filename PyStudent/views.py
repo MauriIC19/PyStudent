@@ -125,6 +125,8 @@ def resultados(request):
         if request.method == 'POST':
             palabras = request.POST.getlist('arrPalabras[]')
             print(palabras)
+            #Hacer función Ajax onload para resultadoDictado y mandarle en un JSON el query
+            #y el arreglo de palabras correctas para que las despliegue haciendo la comparación
         return render(request, 'resultadoDictado.html')
     else:
         return redirect('/pystudent/')
