@@ -94,7 +94,7 @@ function cambiarPalabra(){
           palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
           document.getElementById('palabraEscrita').value = ""
         }
-        if (x == 1) {
+        if (x == 19) {
           boton = document.getElementById('siguiente');
           boton.innerHTML = "Finalizar Dictado";
           boton.onclick = null;
