@@ -107,7 +107,7 @@ def dictado(request):
 
             from comtypes.gen import SpeechLib
 
-            stream.Open("C:/Users/sasuk/Desktop/PyStudent/PyStudent/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
+            stream.Open("C:/Users/sasuk/Desktop/PyStudent/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
             engine.AudioOutputStream = stream
             engine.speak(text)
             stream.Close()
