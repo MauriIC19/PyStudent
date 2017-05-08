@@ -50,29 +50,28 @@
       <h5>Dictado de Palabras</h5>
       <p>Selecciona el grado que cursas actualmente en tu escuela</p>
       <div class="row grade-container">
-        <div class="box-grade two columns">
+        <div onclick="gradoDictado(1)" style="cursor: pointer;" class="box-grade two columns">
           <h1>1ro</h1>
         </div>
-        <div class="box-grade two columns">
+        <div onclick="gradoDictado(2)" style="cursor: pointer;" class="box-grade two columns">
           <h1>2do</h1>
         </div>
-        <div class="box-grade two columns">
+        <div onclick="gradoDictado(3)" style="cursor: pointer;" class="box-grade two columns">
           <h1>3ro</h1>
         </div>
-        <div class="box-grade two columns">
+        <div onclick="gradoDictado(4)" style="cursor: pointer;" class="box-grade two columns">
           <h1>4to</h1>
         </div>
-        <div class="box-grade two columns">
+        <div onclick="gradoDictado(5)" style="cursor: pointer;" class="box-grade two columns">
           <h1>5to</h1>
         </div>
-        <div class="box-grade two columns">
+        <div onclick="gradoDictado(6)" style="cursor: pointer;" class="box-grade two columns">
           <h1>6to</h1>
         </div>
       </div>
       <h5>Instrucciones</h5>
       <p>Al presionar el botón iniciará un dictado de palabras seleccionadas aleatoriamente de acuerdo al nivel de estudios seleccionado. Serán un total de 20 palabras con un tiempo límite de 15 segundos para escribir cada una</p>
-      <button><a href={% url 'dictado' %}>Iniciar Dictado</a></button>
-
+      <a id="irDictado" disabled><button>Iniciar Dictado</button></a>
     </div>
   </div>
 
