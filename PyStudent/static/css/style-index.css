@@ -1,3 +1,7 @@
+*{
+  font-family: "Avenir","Verdana";
+}
+
 a{
   text-decoration: none;
   color: rgba(0, 0, 0, .8);
@@ -22,6 +26,10 @@ body{
   color: #27C79A;
 }
 
+a .selected{
+  color: #27C79A;
+}
+
 button{
   border-color: #27C79A;
   color: #27C79A;
@@ -32,6 +40,10 @@ button:hover{
   background-color: #27C79A;
   color: white;
   border-color: transparent;
+}
+
+button:hover a{
+  color: white;
 }
 
 .section{
@@ -56,8 +68,7 @@ button:hover{
 }
 
 .center{
-  /*Original: padding: 50rem 0 5rem;*/
-  padding: 10rem 0 5rem;
+  padding: 10rem 0 5rem
 }
 
 .center h1{
@@ -92,8 +103,6 @@ button:hover{
 
 .footer{
   background: #333E50;
-  /*Se agregó*/
-  padding: 2.7rem;
 }
 
 .footer p{
