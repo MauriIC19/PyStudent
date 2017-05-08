@@ -3,7 +3,9 @@ from comtypes.client import CreateObject
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
+from Paradigmas.settings import BASE_DIR
 from PyStudent.models import *
+import os
 import pythoncom
 import json
 
@@ -101,13 +103,15 @@ def dictado(request):
 
             pythoncom.CoInitialize()
             text = pal[int(key)]
-            src = "/static/audio/audio.mp3"
+            src = "/static/audio/audio.m4a"
             engine = CreateObject("SAPI.SpVoice")
             stream = CreateObject("SAPI.SpFileStream")
-
             from comtypes.gen import SpeechLib
-
-            stream.Open("C:/Users/sasuk/Desktop/PyStudent/PyStudent/static/audio/audio.mp3", SpeechLib.SSFMCreateForWrite)
+            #Gracias Chuy
+            path = os.path.join(BASE_DIR, "PyStudent\\static\\audio\\audio.m4a")
+            print(path)
+            #stream.Open("C:/Users/sasuk/Desktop/PyStudent/PyStudent/static/audio/audio.m4a", SpeechLib.SSFMCreateForWrite)
+            stream.Open(path, SpeechLib.SSFMCreateForWrite)
             engine.AudioOutputStream = stream
             engine.speak(text)
             stream.Close()
