@@ -24,15 +24,21 @@ def registro(request):
         correo = request.POST.get('correo')
         password = request.POST.get('password')
 
-        al = Alumno();
-        al.name = nombre
-        al.apellidos = apellidos
-        al.mail = correo
-        al.fechaNac = fecNac
-        al.estado = estado
-        al.password = password
+        rows = Alumno.objects.filter(mail=correo).count()
+        hola = 0
 
-        al.save();
+        if rows != 1:
+            al = Alumno();
+            al.name = nombre
+            al.apellidos = apellidos
+            al.mail = correo
+            al.fechaNac = fecNac
+            al.estado = estado
+            al.password = password
+            al.save()
+            hola = 1
+
+        return HttpResponse(hola)
 
     if request.is_ajax():
         estados = Estado.objects.all()

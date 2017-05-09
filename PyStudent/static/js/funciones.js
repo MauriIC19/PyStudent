@@ -1,21 +1,45 @@
 function registrar(){
-    $.ajax({
-        type: 'POST',
-        url: '#',
-        data:{
-            csrfmiddlewaretoken: $("#token").val(),
-            nombre: $("#nombreRegistro").val(),
-            apellidos: $("#apellidosRegistro").val(),
-            fecNac: $("#dia option:selected").text()+"/"+$("#mes option:selected").text()+"/"+$("#anio option:selected").text(),
-            estado: $("#estado option:selected").text(),
-            correo: $("#emailRegistro").val(),
-            password: $("#contraseniaRegistro").val(),
-        },
-        success: function() {
-          alert("Registro exitoso");
-          window.location.href = "/pystudent/login/";
+  nombre = $("#nombreRegistro").val();
+  apellidos = $("#apellidosRegistro").val();
+  dia = $("#dia option:selected").text();
+  mes = $("#mes option:selected").text();
+  anio = $("#anio option:selected").text();
+  estado = $("#estado option:selected").text();
+  correo = $("#emailRegistro").val();
+  password = $("#contraseniaRegistro").val()
+  password2 = $("#contraseniaVerificarRegistro").val()
+
+    if (password == password2) {
+      if (nombre != "" && apellidos != "" && dia != "" && mes != "" && anio != "" && estado != "" && correo != "" && password != "") {
+        $.ajax({
+            type: 'POST',
+            url: '#',
+            data:{
+                csrfmiddlewaretoken: $("#token").val(),
+                nombre: nombre,
+                apellidos: apellidos,
+                fecNac: dia +"/"+mes+"/"+anio,
+                estado: estado,
+                correo: correo,
+                password: password,
+            },
+            success: function(hola) {
+              if (hola == 1) {
+                alert("Registro exitoso");
+                window.location.href = "/pystudent/login/";
+              }
+              else{
+                alert("El correo ya se encuentra registrado");
+              }
+          }
+        });
+      } else{
+        alert("Los campos deben de estar completos")
       }
-    });
+    }
+    else{
+      alert("Las contraseñas no coinciden")
+    }
   }
 
 function cargarEstados(){
