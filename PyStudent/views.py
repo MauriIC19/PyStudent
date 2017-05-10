@@ -115,7 +115,6 @@ def dictado(request):
             from comtypes.gen import SpeechLib
             #Gracias Chuy
             path = os.path.join(BASE_DIR, "PyStudent\\static\\audio\\audio.m4a")
-            print(path)
             #stream.Open("C:/Users/sasuk/Desktop/PyStudent/PyStudent/static/audio/audio.m4a", SpeechLib.SSFMCreateForWrite)
             stream.Open(path, SpeechLib.SSFMCreateForWrite)
             engine.AudioOutputStream = stream
@@ -133,10 +132,23 @@ def dictado(request):
 def resultados(request):
     if request.session['id'] is not 0:
         if request.method == 'POST':
+            grade = request.POST.get('grade')
             palabras = request.POST.getlist('arrPalabras[]')
+            textoPalabras = Palabras.objects.filter(dificultad = int(grade))
+            y = 20
+            pal = []
+            for palabra in textoPalabras:
+                pal.append(palabra.palabra)
+
             print(palabras)
-            #Hacer función Ajax onload para resultadoDictado y mandarle en un JSON el query
-            #y el arreglo de palabras correctas para que las despliegue haciendo la comparación
+            print(pal)
+            #Comparamos palabras
+            for x in range(2):
+                if palabras[x] != pal[x]:
+                    y = y - 1
+            #Almacenar resultados en la base de datos
+            
+        #Cargar resultados desde la base de datos
         return render(request, 'resultadoDictado.html')
     else:
         return redirect('/pystudent/')

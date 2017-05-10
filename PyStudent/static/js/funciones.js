@@ -118,8 +118,10 @@ function cambiarPalabra(){
           palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
           document.getElementById('palabraEscrita').value = ""
         }
-        if (x == 19) {
+        if (x == 2) {
           boton = document.getElementById('siguiente');
+          link = document.getElementById('ref');
+          link.href = "/pystudent/resultados/";
           boton.innerHTML = "Finalizar Dictado";
           boton.onclick = null;
           boton.onclick = function(){
@@ -133,16 +135,21 @@ function cambiarPalabra(){
 
 function enviarPalabras(){
     palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
+    if (palabras.length < 20) {
+      while (palabras.length < 20) {
+        palabras.push(" ")
+      }
+    }
+    grado=findGetParameter('grado');
   $.ajax({
       type: 'POST' ,
       url: '/pystudent/resultados/',
       data:{
           csrfmiddlewaretoken: $("#token").val(),
           'arrPalabras': palabras,
+          'grade' : grado,
       },
       success: function() {
-        grado=findGetParameter('grado');
-        window.location.href = "/pystudent/resultados?grado="+grado;
     }
   });
 }
@@ -151,7 +158,7 @@ $(document).ajaxStart(function(){
           $("#loader").css("display","block");
           $("#bocina").css("display","none");
         });
-        $(document).ajaxComplete(function(){
+$(document).ajaxComplete(function(){
           $("#loader").css("display","none");
           $("#bocina").css("display","block");
         });

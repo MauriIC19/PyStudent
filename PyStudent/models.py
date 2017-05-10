@@ -23,3 +23,5 @@ class Puntaje(models.Model):
     idUsuario = models.CharField(max_length=3)
     aciertos = models.CharField(max_length=3)
     errores = models.CharField(max_length=3)
+    PalabrasUsuario = models.TextField()
+    PalabrasCorrectas = models.TextField()
