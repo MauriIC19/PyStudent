@@ -135,20 +135,32 @@ def resultados(request):
             grade = request.POST.get('grade')
             palabras = request.POST.getlist('arrPalabras[]')
             textoPalabras = Palabras.objects.filter(dificultad = int(grade))
-            y = 20
+            y = 0
             pal = []
             for palabra in textoPalabras:
                 pal.append(palabra.palabra)
-
-            print(palabras)
-            print(pal)
             #Comparamos palabras
-            for x in range(2):
+            for x in range(20):
                 if palabras[x] != pal[x]:
-                    y = y - 1
+                    y = y + 1
             #Almacenar resultados en la base de datos
-            
+            p = Puntaje()
+            p.aciertos = 20 - y
+            p.errores = y
+            p.PalabrasUsuario = json.dumps(palabras)
+            p.PalabrasCorrectas = json.dumps(pal)
+            p.idUsuario = request.session['id']
+            p.save()
+
         #Cargar resultados desde la base de datos
+        if request.method != 'POST' :
+            p = Puntaje.objects.filter(idUsuario = request.session['id']).latest('fecha')
+            jsonDec = json.decoder.JSONDecoder()
+            pc = jsonDec.decode(p.PalabrasCorrectas)
+            pu = jsonDec.decode(p.PalabrasUsuario)
+            aciertos = p.aciertos
+            return render(request, 'resultadoDictado.html', {'aciertos':aciertos, 'pc':pc, 'pu': pu})
+
         return render(request, 'resultadoDictado.html')
     else:
         return redirect('/pystudent/')

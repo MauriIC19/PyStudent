@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 """Con cada modelo se debe de ejecutar el comando:
         python manage.py makemigrations
@@ -20,8 +21,9 @@ class Palabras(models.Model):
     dificultad = models.IntegerField()
 
 class Puntaje(models.Model):
-    idUsuario = models.CharField(max_length=3)
-    aciertos = models.CharField(max_length=3)
-    errores = models.CharField(max_length=3)
+    idUsuario = models.IntegerField()
+    aciertos = models.IntegerField()
+    errores = models.IntegerField()
     PalabrasUsuario = models.TextField()
     PalabrasCorrectas = models.TextField()
+    fecha = models.DateTimeField(default=timezone.now, blank=True)
