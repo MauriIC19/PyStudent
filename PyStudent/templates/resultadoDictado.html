@@ -41,151 +41,38 @@
       <div class="two columns option logo">PyStudent</div>
     </div>
   </div>
-
+  <!-- {% for animal, how_many in animals_data %}
+      {{ animal }} {{ how_many }}
+  {% endfor %} -->
   <div class="section center">
     <div class="container width95">
       <h5>Resultados</h5>
       <p>Escribiste correctamente {{ aciertos }} palabras de 20 dictadas<br>Listado Completo de Palabras</p>
       <div class="row">
+        {% for pu, pc in palabras %}
+        {% if forloop.counter0|divisibleby:5 %}
         <div class="three columns">
+        {% endif %}
           <!--Palabra-->
+          {% if pu == pc %}
           <div class="row word">
-            <div class="two columns">1</div>
-            <div class="five columns">Bondadoso</div>
-            <div class="five columns">Bondadoso</div>
-          </div>
-          <!--Palabra-->
+          {% else %}
           <div class="row word wrong">
-            <div class="two columns">2</div>
-            <div class="five columns">Prohibido</div>
-            <div class="five columns">Prohibido</div>
+          {% endif %}
+            <div class="two columns">{{ forloop.counter }}</div>
+            <div class="five columns">{{pu}}</div>
+            <div class="five columns">{{pc}}</div>
           </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">3</div>
-            <div class="five columns">Observa</div>
-            <div class="five columns">Observa</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">4</div>
-            <div class="five columns">Abusivo</div>
-            <div class="five columns">Abusivo</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">5</div>
-            <div class="five columns">Atravesó</div>
-            <div class="five columns">Atravesó</div>
-          </div>
+        {% if forloop.counter|divisibleby:5 %}
         </div>
-
-        <div class="three columns">
-          <!--Palabra-->
-          <div class="row word wrong">
-            <div class="two columns">6</div>
-            <div class="five columns">Soberbio</div>
-            <div class="five columns">Sobervio</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word ">
-            <div class="two columns">7</div>
-            <div class="five columns">Venenosa</div>
-            <div class="five columns">Venenosa</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">8</div>
-            <div class="five columns">Jueves</div>
-            <div class="five columns">Jueves</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">9</div>
-            <div class="five columns">Venado</div>
-            <div class="five columns">Venado</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">10</div>
-            <div class="five columns">Beneficios</div>
-            <div class="five columns">Beneficios</div>
-          </div>
-        </div>
-
-        <div class="three columns">
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">11</div>
-            <div class="five columns">Prueba</div>
-            <div class="five columns">Prueba</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word ">
-            <div class="two columns">12</div>
-            <div class="five columns">Tradicional</div>
-            <div class="five columns">Tradicional</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">13</div>
-            <div class="five columns">Cadáver</div>
-            <div class="five columns">Cadáver</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">14</div>
-            <div class="five columns">Veloz</div>
-            <div class="five columns">Veloz</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">15</div>
-            <div class="five columns">Hervida</div>
-            <div class="five columns">Hervida</div>
-          </div>
-        </div>
-
-        <div class="three columns">
-          <!--Palabra-->
-          <div class="row word wrong">
-            <div class="two columns">16</div>
-            <div class="five columns">Herbívoro</div>
-            <div class="five columns">Hervívoro</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word ">
-            <div class="two columns">17</div>
-            <div class="five columns">Carnaval</div>
-            <div class="five columns">Carnaval</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">18</div>
-            <div class="five columns">Movimiento</div>
-            <div class="five columns">Movimiento</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">19</div>
-            <div class="five columns">Demasiado</div>
-            <div class="five columns">Demasiado</div>
-          </div>
-          <!--Palabra-->
-          <div class="row word">
-            <div class="two columns">20</div>
-            <div class="five columns">Zinapécuaro</div>
-            <div class="five columns">Zinapécuaro</div>
-          </div>
-        </div>
+        {% endif %}
+        {% endfor %}
       </div>
-      <p>Tiempo Total: 04:07:54</p>
+      <p>Tiempo Total: {{ time }}</p>
     </div>
-
     <div class="section footer">
       <a href={% url 'materia' %}><button>Listo</button></a>
     </div>
-
     <!-- End Document
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   </body>

@@ -26,4 +26,5 @@ class Puntaje(models.Model):
     errores = models.IntegerField()
     PalabrasUsuario = models.TextField()
     PalabrasCorrectas = models.TextField()
+    tiempo =  models.CharField(max_length=10, default='00:00')
     fecha = models.DateTimeField(default=timezone.now, blank=True)

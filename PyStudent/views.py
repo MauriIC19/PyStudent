@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from Paradigmas.settings import BASE_DIR
+from threading import Timer
 from PyStudent.models import *
 import os
 import pythoncom
@@ -133,6 +134,7 @@ def resultados(request):
     if request.session['id'] is not 0:
         if request.method == 'POST':
             grade = request.POST.get('grade')
+            time = request.POST.get('tiempo')
             palabras = request.POST.getlist('arrPalabras[]')
             textoPalabras = Palabras.objects.filter(dificultad = int(grade))
             y = 0
@@ -150,17 +152,26 @@ def resultados(request):
             p.PalabrasUsuario = json.dumps(palabras)
             p.PalabrasCorrectas = json.dumps(pal)
             p.idUsuario = request.session['id']
+            p.tiempo = time
             p.save()
 
-        #Cargar resultados desde la base de datos
-        if request.method != 'POST' :
-            p = Puntaje.objects.filter(idUsuario = request.session['id']).latest('fecha')
-            jsonDec = json.decoder.JSONDecoder()
-            pc = jsonDec.decode(p.PalabrasCorrectas)
-            pu = jsonDec.decode(p.PalabrasUsuario)
-            aciertos = p.aciertos
-            return render(request, 'resultadoDictado.html', {'aciertos':aciertos, 'pc':pc, 'pu': pu})
+        jsonDec = json.decoder.JSONDecoder()
 
-        return render(request, 'resultadoDictado.html')
+        p = Puntaje.objects.filter(idUsuario = request.session['id']).latest('fecha')
+        pc = jsonDec.decode(p.PalabrasCorrectas)
+        pu = jsonDec.decode(p.PalabrasUsuario)
+        aciertos = p.aciertos
+        time = p.tiempo
+
+        p = Puntaje.objects.filter(idUsuario = request.session['id']).latest('fecha')
+        pc = jsonDec.decode(p.PalabrasCorrectas)
+        pu = jsonDec.decode(p.PalabrasUsuario)
+        aciertos = p.aciertos
+        time = p.tiempo
+
+        palabras = zip(pc, pu)
+        
+        return render(request, 'resultadoDictado.html', {'aciertos':aciertos, 'palabras':palabras, 'time':time})
+
     else:
         return redirect('/pystudent/')

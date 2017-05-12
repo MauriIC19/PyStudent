@@ -118,7 +118,7 @@ function cambiarPalabra(){
           palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
           document.getElementById('palabraEscrita').value = ""
         }
-        if (x == 2) {
+        if (x == 1) {
           boton = document.getElementById('siguiente');
           link = document.getElementById('ref');
           link.href = "/pystudent/resultados/";
@@ -140,6 +140,7 @@ function enviarPalabras(){
         palabras.push(" ")
       }
     }
+    tiempo = document.getElementById('reloj').innerHTML
     grado=findGetParameter('grado');
   $.ajax({
       type: 'POST' ,
@@ -148,10 +149,28 @@ function enviarPalabras(){
           csrfmiddlewaretoken: $("#token").val(),
           'arrPalabras': palabras,
           'grade' : grado,
+          'tiempo' : tiempo,
       },
       success: function() {
     }
   });
+}
+
+function startTimer() {
+    var timer = 0, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display = document.getElementById('reloj');
+        display.innerHTML = minutes + ":" + seconds;
+
+        timer++
+        timer = duration;
+    }, 1000);
 }
 
 $(document).ajaxStart(function(){
