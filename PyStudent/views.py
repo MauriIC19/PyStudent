@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from Paradigmas.settings import BASE_DIR
-from threading import Timer
+from time import sleep
 from PyStudent.models import *
 import os
 import pythoncom
@@ -157,11 +157,7 @@ def resultados(request):
 
         jsonDec = json.decoder.JSONDecoder()
 
-        p = Puntaje.objects.filter(idUsuario = request.session['id']).latest('fecha')
-        pc = jsonDec.decode(p.PalabrasCorrectas)
-        pu = jsonDec.decode(p.PalabrasUsuario)
-        aciertos = p.aciertos
-        time = p.tiempo
+        sleep(2)
 
         p = Puntaje.objects.filter(idUsuario = request.session['id']).latest('fecha')
         pc = jsonDec.decode(p.PalabrasCorrectas)
@@ -170,7 +166,7 @@ def resultados(request):
         time = p.tiempo
 
         palabras = zip(pc, pu)
-        
+
         return render(request, 'resultadoDictado.html', {'aciertos':aciertos, 'palabras':palabras, 'time':time})
 
     else:
