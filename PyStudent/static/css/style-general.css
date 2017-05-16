@@ -16,6 +16,7 @@ body{
 
 .selected{
   color: #27C79A;
+  font-weight: 600;
 }
 
 button{
@@ -53,9 +54,17 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
 
 .header{
   background: white;
+  padding: 25px;
+}
+
+.header a{
   font-weight: 500;
   color: #333E50;
-  padding: 25px;
+  text-decoration: none;
+}
+
+.header a:hover{
+  font-weight: 600;
 }
 
 .option{
@@ -63,17 +72,16 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
   line-height: 4rem;
 }
 
-.cancel-option{
-  font-weight: 400;
-}
-
-.cancel-option:hover{
-  font-weight: 500;
-}
-
 .logo{
   font-weight: 600;
   font-size: 30px;
+}
+
+.logo a, .logo a:hover, .logo a:active, .logo a:link, .logo a:visited{
+  font-weight: 600;
+  font-size: 30px;
+  color: #333E50;
+  text-decoration: none;
 }
 
 .center{

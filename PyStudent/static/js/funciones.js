@@ -2,7 +2,7 @@ function registrar(){
   nombre = $("#nombreRegistro").val();
   apellidos = $("#apellidosRegistro").val();
   dia = $("#dia option:selected").text();
-  mes = $("#mes option:selected").text();
+  mes = $("#mes").val();
   anio = $("#anio option:selected").text();
   estado = $("#estado option:selected").text();
   correo = $("#emailRegistro").val();
@@ -57,9 +57,10 @@ function cargarEstados(){
           document.getElementById('dia').innerHTML+=
           "<option>"+i+"</option>"
         }
-        for(i=1; i<=12; i++){
+        for(i=0; i<=11; i++){
+          var meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
           document.getElementById('mes').innerHTML+=
-          "<option>"+i+"</option>"
+          "<option value="+(i+1)+">"+meses[i]+"</option>"
         }
         for(i=1980; i<=2017; i++){
           document.getElementById('anio').innerHTML+=
