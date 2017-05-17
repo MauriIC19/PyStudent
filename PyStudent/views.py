@@ -10,12 +10,14 @@ import os
 import pythoncom
 import json
 
+#Envío al index de la página :8000/pystudent------------------------------------
 def index(request):
     request.session['id'] = 0
     if request.session['id']:
         request.session['id'] = 0
     return render(request, 'index.html')
 
+#Envío al registro de la página :8000/pystudent/registro------------------------
 def registro(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
@@ -51,6 +53,7 @@ def registro(request):
     else:
         return render(request, 'registro.html')
 
+#Envío al registro de la página :8000/pystudent/login---------------------------
 def login(request):
     if request.method == 'POST':
         correo = request.POST.get('correo')
@@ -69,7 +72,7 @@ def login(request):
     else:
         return render(request, 'login.html')
 
-
+#Envío al registro de la página :8000/pystudent/materia-------------------------
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def materia(request):
     if request.session['id'] is not 0:
@@ -79,7 +82,7 @@ def materia(request):
     else:
         return redirect('/pystudent/')
 
-
+#Envío al registro de la página :8000/pystudent/evaluacion----------------------
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def evaluacion(request):
     if request.session['id'] is not 0:
@@ -87,7 +90,7 @@ def evaluacion(request):
     else:
         return redirect('/pystudent/')
 
-
+#Envío al registro de la página :8000/pystudent/instrucciones-------------------
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def instrucciones(request):
     if request.session['id'] is not 0:
@@ -95,6 +98,7 @@ def instrucciones(request):
     else:
         return redirect('/pystudent/')
 
+#Envío al registro de la página :8000/pystudent/dictado-------------------------
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dictado(request):
     if request.session['id'] is not 0:
@@ -128,7 +132,7 @@ def dictado(request):
     else:
         return redirect('/pystudent/')
 
-
+#Envío al registro de la página :8000/pystudent/resultados----------------------
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def resultados(request):
     if request.session['id'] is not 0:
