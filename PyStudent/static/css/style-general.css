@@ -191,7 +191,7 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
   position: fixed;
   bottom: 0;
   width: 100%;
-  box-shadow: 0px 25px 30px 0px #000000;
+  box-shadow: 0px 10px 25px 0px #000000;
   background: white;
 }
 
