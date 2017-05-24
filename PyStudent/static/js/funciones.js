@@ -90,7 +90,15 @@ function verificarLogin(){
   });
 }
 
-function gradoDictado(x){
+function gradoDictado(element,x){
+
+  if(document.querySelector(".box-grade-selected")){
+    var box = document.querySelector(".box-grade-selected");
+    box.classList.remove("box-grade-selected");
+  }
+
+  element.classList.add("box-grade-selected");
+
   var a = document.getElementById('irDictado'); //or grab it by tagname etc
   a.href = "/pystudent/dictado?grado="+x;
   a.disabled = false;
@@ -177,10 +185,20 @@ function startTimer() {
 $(document).ajaxStart(function(){
           $("#loader").css("display","block");
           $("#bocina").css("display","none");
+
+          if(document.getElementById("background-loading")){
+            document.getElementById("background-loading").classList.remove("no-visible");
+            document.getElementById("loading-div").classList.remove("no-visible");
+          }
         });
 $(document).ajaxComplete(function(){
           $("#loader").css("display","none");
           $("#bocina").css("display","block");
+
+          if(document.getElementById("background-loading")){
+            document.getElementById("loading-div").classList.add("no-visible");
+            document.getElementById("background-loading").classList.add ("no-visible");
+          }
         });
 
 function findGetParameter(parameterName) {

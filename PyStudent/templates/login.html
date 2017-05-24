@@ -33,14 +33,28 @@
 </head>
 <body>
 
+  <!-- Loading Element
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div id="background-loading" class="background-loading no-visible"></div>
+
+  <div id="loading-div" class="loading-div no-visible">
+    <div class=" sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+  </div>
+
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <div class="section header">
     <div class="row">
       <div class="two columns option logo"><a href={% url 'index' %}>PyStudent</a></div>
-    <div class="eight columns">&nbsp</div>
-    <div class="two columns option cancel-option"><a href={% url 'registro' %}>Regístrate</a></div>
+      <div class="eight columns">&nbsp</div>
+      <div class="two columns option cancel-option"><a href={% url 'registro' %}>Regístrate</a></div>
     </div>
   </div>
 
