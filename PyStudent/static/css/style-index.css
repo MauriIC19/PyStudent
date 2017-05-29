@@ -111,3 +111,37 @@ button:hover a{
   color: white;
   font-weight: 500;
 }
+
+/*---------- No Compatible Styles-----------*/
+
+body.overflowHidden{
+  overflow: hidden;
+}
+
+.no-compatible{
+  position: fixed;
+  background: white;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.no-compatible h1{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  margin: auto;
+  text-align: center;
+  color: #333E50;
+  font-size: 1.4em;
+  font-weight: 500 !important;
+}
+
+/*---------- Loading Syles ------------*/
+
+.no-visible{
+  visibility: hidden;
+}

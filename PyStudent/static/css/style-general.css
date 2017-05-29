@@ -147,6 +147,10 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
   font-weight: 500;
 }
 
+.box-option-word{
+  max-height: 200px !important;
+}
+
 .grade-container{
   margin-bottom: 20px;
 }
@@ -210,11 +214,240 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
   margin-right: 1rem;
 }
 
+/*---------- Dictation Syles-----------*/
+
+.loader {
+  position: relative;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  left: calc(50% - 50px);
+  animation: spin 2s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#bocina{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  left: calc(50% - 50px);
+  cursor: pointer;
+}
+
+/*----------Notification Styles----------*/
+
+#ventana_notificaciones {
+    position: absolute;
+    z-index: 10004;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    float: left;
+    width: 400px;
+    height: 190px;
+    margin: auto;
+    transition: opacity .4s;
+    transition-delay: .1s;
+    opacity: 1;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 10px 20px rgba(180,180,180,0.19), 0 6px 6px rgba(200,200,200,0.23);
+}
+
+#notificaciones_encabezado {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: rgb(217,93,107);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.notificaciones_encabezado_ok {
+    background: #27C79A !important;
+}
+
+#notificaciones_encabezado h1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-size: 1.4em;
+    font-weight: 500 !important;
+}
+
+.informacion_notificacion {
+    position: relative;
+    top: 60px;
+    box-sizing: border-box;
+    height: 75px;
+    padding: 0px 20px 0 20px;
+    text-align: center;
+}
+
+.informacion_notificacion p {
+    font-size: 0.95em;
+    line-height: 18px;
+    padding-top: 25px;
+    letter-spacing: 0.4px;
+    color: #333E50;
+    font-weight: 400;
+}
+
+.pie_notificaciones_general {
+    position: relative;
+    top: 60px;
+    overflow-y: auto;
+    width: 100%;
+    height: 55px;
+    margin: auto;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: transparent;
+}
+
+.guardar_btn {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 200px;
+    height: 34px;
+    margin: auto !important;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    color: white;
+    border: none;
+    background: rgb(217,93,107);
+    border-radius: 4px;
+    outline: none;
+    line-height: 30px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.guardar_btn_ok{
+  background: #27C79A !important;
+}
+
+/*-----------Grid Notification-----------*/
+
+.divMedio, .div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8, .div9, .div10, .div11, .div12, .div12Relacion3 {
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-right: 1%;
+}
+
+.divMedio {
+    width: 3.66%;
+}
+
+.div1 {
+    width: 7.33%;
+}
+
+.div2 {
+    width: 15.66%;
+}
+
+.div3 {
+    width: 23.99%;
+}
+
+.div4 {
+    width: 32.33%;
+}
+
+.div5 {
+    width: 40.65%;
+}
+
+.div6 {
+    width: 48.98%;
+}
+
+.div7 {
+    width: 57.31%;
+}
+
+.div8 {
+    width: 65.64%;
+}
+
+.div9 {
+    width: 73.97%;
+}
+
+.div10 {
+    width: 82.3%;
+}
+
+.div11 {
+    width: 90.63%;
+}
+
+.div12 {
+    width: 99%;
+}
+
+.break {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 2px;
+}
+
+/*---------- No Compatible Styles-----------*/
+
+.no-compatible{
+  position: fixed;
+  background: white;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.no-compatible h1{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  margin: auto;
+  text-align: center;
+  color: #333E50;
+  font-size: 1.4em;
+  font-weight: 500 !important;
+}
+
 /*---------- Loading Syles ------------*/
 
 .no-visible{
   visibility: hidden;
-  transition: all 1s;
 }
 
 .background-loading{

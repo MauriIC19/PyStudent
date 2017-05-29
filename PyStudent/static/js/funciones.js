@@ -1,3 +1,82 @@
+//Validacionde tamaño de pantalla para un correcto funcionamiento
+
+window.onresize = function(event) {
+  sizeValidator();
+};
+
+function sizeValidator(){
+  if(window.innerWidth <= 800 || window.innerHeight <= 600) {
+    document.body.style.overflow="hidden";
+    document.getElementById("no-compatible").classList.remove("no-visible");
+  } else {
+    document.body.style.overflow="auto";
+    document.getElementById("no-compatible").classList.add("no-visible");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", sizeValidator);
+
+//Notificaciones del Sistema
+
+ function generarNotificacion(titulo, mensaje, boton, estado) {
+     contenedorGeneral = document.getElementById("centrar_ventana_notificaciones");
+
+     contenedorNotificacion = document.createElement('div');
+     contenedorNotificacion.setAttribute("id", "ventana_notificaciones");
+
+     contenedorEncabezadoNotificacion = document.createElement('div');
+     contenedorEncabezadoNotificacion.setAttribute("id", "notificaciones_encabezado");
+
+     contenedorInformacionNotificacion = document.createElement('div');
+     contenedorInformacionNotificacion.classList.add("informacion_notificacion");
+
+     contenedorPieNotificacion = document.createElement('div');
+     contenedorPieNotificacion.classList.add("pie_notificaciones_general");
+
+     h1 = document.createElement('h1');
+     textoh1 = document.createTextNode(titulo);
+     h1.appendChild(textoh1);
+     h1.setAttribute("id", "titulo_notificacion");
+
+     p = document.createElement('p');
+     informacionp = document.createTextNode(mensaje);
+     p.appendChild(informacionp);
+     p.setAttribute("id", "contenido_notificacion");
+
+     labelBoton = document.createElement('label');
+     textoBoton = document.createTextNode(boton);
+     labelBoton.appendChild(textoBoton);
+     labelBoton.classList.add("guardar_btn");
+     labelBoton.classList.add("div5");
+     labelBoton.setAttribute("id", "boton_notificacion");
+
+     if(estado=="ok"){
+       contenedorEncabezadoNotificacion.classList.add("notificaciones_encabezado_ok");
+       labelBoton.classList.add("guardar_btn_ok");
+     }
+
+     contenedorEncabezadoNotificacion.appendChild(h1);
+     contenedorInformacionNotificacion.appendChild(p);
+     contenedorPieNotificacion.appendChild(labelBoton);
+
+     contenedorNotificacion.appendChild(contenedorEncabezadoNotificacion);
+     contenedorNotificacion.appendChild(contenedorInformacionNotificacion);
+     contenedorNotificacion.appendChild(contenedorPieNotificacion);
+
+     contenedorGeneral.appendChild(contenedorNotificacion);
+
+     document.getElementById("background-loading-notification").classList.remove("no-visible");
+ }
+
+ function cerrarNotificacion() {
+
+      document.getElementById("background-loading-notification").classList.add("no-visible");
+      document.getElementById('ventana_notificaciones').remove();
+  }
+
+
+//Funcionalidad General del Sistema
+
 function registrar(){
   nombre = $("#nombreRegistro").val();
   apellidos = $("#apellidosRegistro").val();
@@ -25,20 +104,32 @@ function registrar(){
             },
             success: function(hola) {
               if (hola == 1) {
-                alert("Registro exitoso");
-                window.location.href = "/pystudent/login/";
+                generarNotificacion("Registro Exitoso","El alumno ha sido registrado de manera exitosa en PyStudent.","ACEPTAR","ok");
+                document.getElementById("boton_notificacion").addEventListener("click", function() {
+                  cerrarNotificacion();
+                  window.location.href = "/pystudent/login/";
+                });
               }
               else{
-                alert("El correo ya se encuentra registrado");
+                generarNotificacion("Usuario Existente","La dirección de correo electrónico ingresado ya se encuentra registrada.","ACEPTAR","error");
+                document.getElementById("boton_notificacion").addEventListener("click", function() {
+                  cerrarNotificacion();
+                });
               }
           }
         });
       } else{
-        alert("Los campos deben de estar completos")
+        generarNotificacion("Completar Información","Se detectaron campos vacios, complete toda la información obligatoria para continuar.","ACEPTAR","error");
+        document.getElementById("boton_notificacion").addEventListener("click", function() {
+          cerrarNotificacion();
+        });
       }
     }
     else{
-      alert("Las contraseñas no coinciden")
+      generarNotificacion("Error de Contraseña","Verifique que las contraseñas ingresadas coincidan e inténtelo nuevamente.","ACEPTAR","error");
+      document.getElementById("boton_notificacion").addEventListener("click", function() {
+        cerrarNotificacion();
+      });
     }
   }
 
@@ -81,7 +172,10 @@ function verificarLogin(){
       },
       success: function(response) {
         if (response['key'] === '0') {
-          alert("El usuario y/o contraseña son incorrectos")
+          generarNotificacion("Usuario/Contraseña Incorrectos","Se ha ingresado erroneamente el usuario o la contraseña del alumno, verifique la información.","ACEPTAR","error");
+          document.getElementById("boton_notificacion").addEventListener("click", function() {
+            cerrarNotificacion();
+          });
         }
         else{
           window.location.href = "/pystudent/materia";
@@ -127,7 +221,7 @@ function cambiarPalabra(){
           palabras.push(document.getElementById('palabraEscrita').value.toLowerCase())
           document.getElementById('palabraEscrita').value = ""
         }
-        if (x == 1) {
+        if (x == 19) {
           boton = document.getElementById('siguiente');
           link = document.getElementById('ref');
           link.href = "/pystudent/resultados/";
