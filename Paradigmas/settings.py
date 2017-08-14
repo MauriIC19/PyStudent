@@ -75,8 +75,6 @@ WSGI_APPLICATION = 'Paradigmas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-#NAME, USER, PASSWORD, HOST, PORT
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
